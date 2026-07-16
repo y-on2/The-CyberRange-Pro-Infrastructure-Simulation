@@ -1,0 +1,29 @@
+Technical Analysis (Why did this happen?)
+A. Scheduler Comparison (SpaceShared vs. TimeShared)
+SpaceShared (The "Queue" Approach):
+
+Performance: It performed significantly better in terms of Execution Time (34-36ms vs 40-46ms). Once a task started, it had the full CPU to itself and finished quickly.
+
+Waiting: It had slightly higher Waiting Times (Start Time ~507-510ms) because tasks had to wait in line.
+
+Cost: Because tasks finished faster once started, the VMs ran for less total time, making this the Cheaper option.
+
+TimeShared (The "Multitasking" Approach):
+
+Performance: It suffered from overhead. Splitting the CPU among multiple tasks slowed down everyone (Avg CPU Time jumped to 46ms).
+
+Waiting: It had the lowest Waiting Time (505.10ms) because every task started processing immediately, even if slowly.
+
+Cost: The inefficiency led to longer VM runtimes, making this the Most Expensive option.
+
+B. Allocation Policy Comparison (Best Fit vs. First/Worst Fit)
+Best Fit (The Winner):
+
+It successfully packed VMs tightly. By finding the "tightest fit" for small VMs, it likely preserved the larger Host's capacity for the bigger "VictimServer" VMs. This minimized fragmentation and allowed the efficient use of the faster host resources, leading to the Best Performance.
+
+First Fit & Worst Fit (The Losers):
+
+These two produced identical results in your simulation ($27.00 / 546ms). This suggests that for your specific sequence of VMs, picking the "first available" or the "emptiest" host resulted in the same placement pattern, which was slightly less optimal than Best Fit.
+
+Conclusion
+For the CyberRange Pro scenario, you should recommend the SpaceShared - BestFit configuration. It saves the company 26% in costs ($26 vs $35) compared to the worst configuration and delivers the fastest user experience.
